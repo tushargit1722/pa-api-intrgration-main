@@ -1,7 +1,7 @@
 <?php
 /*
- * Plugin Name: PharmaACE API Integration
- * Plugin URI: pharmaace.com
+ * Plugin Name: SailiCity API Integration
+ * Plugin URI: sailicity.com
  * Author: PharmaACE
  * Author URI: https://pharmaace.com/
  * Description: Plugin for API Integration
@@ -18,9 +18,10 @@ define('API_ERROR_LOG', plugin_dir_path(__FILE__) . 'api-error.log');
 include plugin_dir_path( __FILE__ ) . 'pa-config.php';
 include plugin_dir_path( __FILE__ ) . 'includes/error-log.php';
 include plugin_dir_path( __FILE__ ) . 'import-data/pa-push-cpt.php';
-include plugin_dir_path( __FILE__ ) . 'import-data/import-cabins.php';
+include plugin_dir_path( __FILE__ ) . 'import-data/import-cabins.php'; // import cabins
 include plugin_dir_path( __FILE__ ) . 'import-data/import-countries.php';
 include plugin_dir_path( __FILE__ ) . 'import-data/import-charter-bases.php';
+include plugin_dir_path( __FILE__ ) . 'import-data/import-country-states.php';
 
 class paPlugin
 {
@@ -113,6 +114,8 @@ function api_page_function(){
 			value="Import Countries"/>
 	<input type="submit" class="ns-btn" name="import_charter_bases"
 			value="Import Charter Bases"/>
+	<input type="submit" class="ns-btn" name="import_country_states"
+			value="Import Country States"/>
 	<input type="submit" class="ns-btn" name="pushcpt"
 			value="All data"/>
 			
@@ -122,7 +125,7 @@ function api_page_function(){
 //button call Api
 if(array_key_exists('pushcpt', $_POST)) 
 {
-    pushcpt();    
+    pushcpt();    // for all sync modify in later stage
 }
 // call Api for Cabins
 if(array_key_exists('import_cabins', $_POST))
@@ -140,11 +143,22 @@ if(array_key_exists('import_charter_bases', $_POST))
     import_charter_bases();
 }	
 
+// call Api for Charter Bases
+if(array_key_exists('import_country_states', $_POST))
+{
+    import_country_states();
+}	
+
 
 
 
 
 }
+
+
+
+/* Generic Function */
+
 function get_data_from_api($endpoint,$body) {
 
 	$body = wp_json_encode( $body );

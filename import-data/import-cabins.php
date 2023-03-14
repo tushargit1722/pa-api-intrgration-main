@@ -3,6 +3,7 @@
 function import_cabins(){
 
 	$cabins_cpt_type = 'cabins'; // type for associated CPT
+
 	$endpoint_cabins = get_option( 'cabins_endpoint_url' );
     $endpoint_username = get_option( 'api-username' );
     $endpoint_password = get_option( 'api-password' );
@@ -33,6 +34,7 @@ if ( ( 200 === $response_code) && post_type_exists( $cabins_cpt_type )) {
 	);
 	
 	$post_id = wp_insert_post( $post_data );
+	
 	update_field( 'id', $cabinId, $post_id );
 	update_field( 'cabinposition', $cabinPosition, $post_id );
 	update_field( 'cabintype', $cabinType, $post_id );

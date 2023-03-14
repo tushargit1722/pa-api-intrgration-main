@@ -2,19 +2,24 @@
 
 function import_countries(){
 
-$cpt_type = 'countries'; // type for associated CPT
-$endpoint_cabins = 'http://ws.nausys.com/CBMS-external/rest/catalogue/v6/countries';
+$cpt_type = 'country'; // type for associated CPT
+
+
+    $endpoint = get_option( 'countries_endpoint_url' );
+    $endpoint_username = get_option( 'api-username' );
+    $endpoint_password = get_option( 'api-password' );
+
 $body_cabins = [
-    "username" =>"rest258@TTTTT",
-    "password" =>"b8f6t3sw"
+    "username" =>$endpoint_username,
+    "password" =>$endpoint_password
 ];
 
-list($response_code, $countries) = get_data_from_api($endpoint_cabins,$body_cabins); // Call to Get Data for Enpoint
+list($response_code, $countries) = get_data_from_api($endpoint,$body_cabins); // Call to Get Data for Enpoint
 
 echo '<h2> Function Called : import_cabins(): </h2>';
 echo $response_code;
-//print_r($countries);
-///
+print_r($countries);
+exit;
 
 if ( ( 200 === $response_code) && post_type_exists( $cpt_type )) {
     delete_all_posts_for($cpt_type); // To delete
@@ -29,6 +34,7 @@ if ( ( 200 === $response_code) && post_type_exists( $cpt_type )) {
         'post_type' => $cpt_type,
     );
     $post_id = wp_insert_post( $post_data );
+    
         // Get the data for each cabin
         // $cabinName = isset($country["cabinName"]) ? $country["cabinName"] : "";
         // $cabinPosition = isset($country["cabinPosition"]) ? $country["cabinPosition"] : "";
@@ -40,9 +46,14 @@ if ( ( 200 === $response_code) && post_type_exists( $cpt_type )) {
         update_field( 'code2', $countryCode2, $post_id );
 
         $names = isset($country["name"]) ? $country["name"] : "";
+
         $textEN = isset($country["name"]["textEN"]) ? $country["name"]["textEN"] : "";
+
+      
         //echo $textEN;
+
         update_field( 'field_64104898609b6', $textEN, $post_id );
+
             foreach($names as $name => $name_value) {
                     //echo "Key=" . $name . ", Value=" . $name_value;
 

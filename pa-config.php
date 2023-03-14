@@ -5,6 +5,9 @@ function register_config_options()
     register_setting( 'plugin-configuration-group', 'api-username' );
     register_setting( 'plugin-configuration-group', 'api-password' );
     register_setting( 'plugin-configuration-group', 'cabins_endpoint_url' );
+    register_setting( 'plugin-configuration-group', 'countries_endpoint_url' );
+    register_setting( 'plugin-configuration-group', 'countrystate_endpoint_url' );
+
     register_setting( 'plugin-configuration-group', 'charter_bases_endpoint_url' );//charter Bases
 }
 
@@ -37,6 +40,7 @@ function myFunction() {
             <td><input type="password" id="myInput" size=50 name="api-password" value="<?php echo esc_attr( get_option('api-password') ); ?>" /></td>
              
         </tr>
+
         <tr valign="top">  
             <th> </th>        
             <td><input type="checkbox" onclick="myFunction()"> Show Password</tr></td>
@@ -50,8 +54,19 @@ function myFunction() {
             </tr>
 
             <tr valign="top">
+            <th scope="row">Countries endpoint:</th>
+            <td><input type="url" size=100 name="countries_endpoint_url" value="<?php echo esc_attr( get_option('countries_endpoint_url') ); ?>" /></td>
+            </tr>
+
+
+            <tr valign="top">
             <th scope="row">Charter Bases endpoint:</th>
             <td><input type="url" size=100 name="charter_bases_endpoint_url" value="<?php echo esc_attr( get_option('charter_bases_endpoint_url') ); ?>" /></td>
+            </tr>
+
+            <tr valign="top">
+            <th scope="row">Country States endpoint:</th>
+            <td><input type="url" size=100 name="countrystate_endpoint_url" value="<?php echo esc_attr( get_option('countrystate_endpoint_url') ); ?>" /></td>
             </tr>
         </table>
         
