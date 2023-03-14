@@ -1,0 +1,194 @@
+[
+  {
+  "key": "group_64098e27078bc",
+  "title": "cabins",
+  "fields": [
+  {
+  "key": "field_64098e277c9fd",
+  "label": "id",
+  "name": "id",
+  "aria-label": "",
+  "type": "number",
+  "instructions": "",
+  "required": 0,
+  "conditional_logic": 0,
+  "wrapper": {
+  "width": "",
+  "class": "",
+  "id": ""
+  },
+  "default_value": "",
+  "min": "",
+  "max": "",
+  "placeholder": "",
+  "step": "",
+  "prepend": "",
+  "append": ""
+  },
+  {
+  "key": "field_64098e4b7c9fe",
+  "label": "cabinPosition",
+  "name": "cabinposition",
+  "aria-label": "",
+  "type": "text",
+  "instructions": "",
+  "required": 0,
+  "conditional_logic": 0,
+  "wrapper": {
+  "width": "",
+  "class": "",
+  "id": ""
+  },
+  "default_value": "",
+  "maxlength": "",
+  "placeholder": "",
+  "prepend": "",
+  "append": ""
+  },
+  {
+  "key": "field_64098e597c9ff",
+  "label": "cabinType",
+  "name": "cabintype",
+  "aria-label": "",
+  "type": "text",
+  "instructions": "",
+  "required": 0,
+  "conditional_logic": 0,
+  "wrapper": {
+  "width": "",
+  "class": "",
+  "id": ""
+  },
+  "default_value": "",
+  "maxlength": "",
+  "placeholder": "",
+  "prepend": "",
+  "append": ""
+  }
+  ],
+  "location": [
+  [
+  {
+  "param": "post_type",
+  "operator": "==",
+  "value": "cabins"
+  }
+  ]
+  ],
+  "menu_order": 0,
+  "position": "acf_after_title",
+  "style": "seamless",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0
+  },
+  {
+  "key": "group_640ac1ab8695b",
+  "title": "countries",
+  "fields": [
+  {
+  "key": "field_640ac1aca6715",
+  "label": "id",
+  "name": "id",
+  "aria-label": "",
+  "type": "number",
+  "instructions": "",
+  "required": 0,
+  "conditional_logic": 0,
+  "wrapper": {
+  "width": "",
+  "class": "",
+  "id": ""
+  },
+  "default_value": "",
+  "min": "",
+  "max": "",
+  "placeholder": "",
+  "step": "",
+  "prepend": "",
+  "append": ""
+  },
+  {
+  "key": "field_640ac1b9a6716",
+  "label": "Code",
+  "name": "code",
+  "aria-label": "",
+  "type": "text",
+  "instructions": "",
+  "required": 0,
+  "conditional_logic": 0,
+  "wrapper": {
+  "width": "",
+  "class": "",
+  "id": ""
+  },
+  "default_value": "",
+  "maxlength": "",
+  "placeholder": "",
+  "prepend": "",
+  "append": ""
+  },
+  {
+  "key": "field_640ac5c2b744e",
+  "label": "Code2",
+  "name": "code2",
+  "aria-label": "",
+  "type": "text",
+  "instructions": "",
+  "required": 0,
+  "conditional_logic": 0,
+  "wrapper": {
+  "width": "",
+  "class": "",
+  "id": ""
+  },
+  "default_value": "",
+  "maxlength": "",
+  "placeholder": "",
+  "prepend": "",
+  "append": ""
+  },
+  {
+  "key": "field_64104898609b6",
+  "label": "Country Name",
+  "name": "texten",
+  "aria-label": "",
+  "type": "text",
+  "instructions": "",
+  "required": 0,
+  "conditional_logic": 0,
+  "wrapper": {
+  "width": "",
+  "class": "",
+  "id": ""
+  },
+  "default_value": "",
+  "maxlength": "",
+  "placeholder": "",
+  "prepend": "",
+  "append": ""
+  }
+  ],
+  "location": [
+  [
+  {
+  "param": "post_type",
+  "operator": "==",
+  "value": "countries"
+  }
+  ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0
+  }
+]

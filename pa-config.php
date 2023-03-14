@@ -4,7 +4,8 @@ function register_config_options()
 {   
     register_setting( 'plugin-configuration-group', 'api-username' );
     register_setting( 'plugin-configuration-group', 'api-password' );
-    register_setting( 'plugin-configuration-group', 'endpoint_url' );
+    register_setting( 'plugin-configuration-group', 'cabins_endpoint_url' );
+    register_setting( 'plugin-configuration-group', 'charter_bases_endpoint_url' );//charter Bases
 }
 
 
@@ -45,7 +46,12 @@ function myFunction() {
 
             <tr valign="top">
             <th scope="row">Cabins endpoint:</th>
-            <td><input type="url" size=100 name="endpoint_url" value="<?php echo esc_attr( get_option('endpoint_url') ); ?>" /></td>
+            <td><input type="url" size=100 name="cabins_endpoint_url" value="<?php echo esc_attr( get_option('cabins_endpoint_url') ); ?>" /></td>
+            </tr>
+
+            <tr valign="top">
+            <th scope="row">Charter Bases endpoint:</th>
+            <td><input type="url" size=100 name="charter_bases_endpoint_url" value="<?php echo esc_attr( get_option('charter_bases_endpoint_url') ); ?>" /></td>
             </tr>
         </table>
         

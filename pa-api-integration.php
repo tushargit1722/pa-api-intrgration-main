@@ -16,10 +16,11 @@ define('API_ERROR_LOG', plugin_dir_path(__FILE__) . 'api-error.log');
 
 
 include plugin_dir_path( __FILE__ ) . 'pa-config.php';
+include plugin_dir_path( __FILE__ ) . 'includes/error-log.php';
 include plugin_dir_path( __FILE__ ) . 'import-data/pa-push-cpt.php';
 include plugin_dir_path( __FILE__ ) . 'import-data/import-cabins.php';
 include plugin_dir_path( __FILE__ ) . 'import-data/import-countries.php';
-include plugin_dir_path( __FILE__ ) . 'includes/error-log.php';
+include plugin_dir_path( __FILE__ ) . 'import-data/import-charter-bases.php';
 
 class paPlugin
 {
@@ -110,6 +111,8 @@ function api_page_function(){
 			value="Import Cabins"/>
 	<input type="submit" class="ns-btn" name="import_countries"
 			value="Import Countries"/>
+	<input type="submit" class="ns-btn" name="import_charter_bases"
+			value="Import Charter Bases"/>
 	<input type="submit" class="ns-btn" name="pushcpt"
 			value="All data"/>
 			
@@ -126,10 +129,15 @@ if(array_key_exists('import_cabins', $_POST))
 {
     import_cabins();
 }
-// call Api for Cabins
+// call Api for Countries
 if(array_key_exists('import_countries', $_POST))
 {
     import_countries();
+}	
+// call Api for Charter Bases
+if(array_key_exists('import_charter_bases', $_POST))
+{
+    import_charter_bases();
 }	
 
 

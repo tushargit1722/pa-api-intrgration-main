@@ -3,23 +3,18 @@
 function import_cabins(){
 
 	$cabins_cpt_type = 'cabins'; // type for associated CPT
-	$endpoint_cabins = get_option( 'endpoint_url' );
+	$endpoint_cabins = get_option( 'cabins_endpoint_url' );
     $endpoint_username = get_option( 'api-username' );
     $endpoint_password = get_option( 'api-password' );
 	$body_cabins = [
-		"username" =>"rest258@TTTTT",
-		"password" =>"b8f6t3sw"
+		"username" =>$endpoint_username,
+		"password" =>$endpoint_password
 	];
 	list($response_code, $cabins) = get_data_from_api($endpoint_cabins,$body_cabins); // Call to Get Data for Enpoint
 
 	echo '<h2> Function Called : import_cabins(): </h2>';
 	echo $response_code;
-
-//print_r($cabins);
-//exit;
-
-
-$cabins_cpt_type = 'cabins';
+	echo $endpoint_cabins;
 
 if ( ( 200 === $response_code) && post_type_exists( $cabins_cpt_type )) {
 	delete_all_posts_for($cabins_cpt_type); // To delete
@@ -34,7 +29,7 @@ if ( ( 200 === $response_code) && post_type_exists( $cabins_cpt_type )) {
 	$post_data = array(
 		'post_title' => $cabinName,
 		'post_status' => 'publish',
-		'post_type' => 'cabins',
+		'post_type' => $cabins_cpt_type,
 	);
 	
 	$post_id = wp_insert_post( $post_data );
