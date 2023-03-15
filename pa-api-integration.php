@@ -3,10 +3,10 @@
  * Plugin Name: SailiCity API Integration
  * Plugin URI: sailicity.com
  * Author: PharmaACE
- * Author URI: https://pharmaace.com/
+ * Author URI: https://mundrisoft.com/
  * Description: Plugin for API Integration
  * Version: 1.0
- * text-domain: pa-api-integration
+ * text-domain: sa-api-integration
 */
 
 defined( 'ABSPATH' ) or die;
@@ -14,14 +14,18 @@ defined( 'ABSPATH' ) or die;
 define('API_ERROR_LOG', plugin_dir_path(__FILE__) . 'api-error.log');
 
 
-
 include plugin_dir_path( __FILE__ ) . 'pa-config.php';
 include plugin_dir_path( __FILE__ ) . 'includes/error-log.php';
 include plugin_dir_path( __FILE__ ) . 'import-data/pa-push-cpt.php';
 include plugin_dir_path( __FILE__ ) . 'import-data/import-cabins.php'; // import cabins
-include plugin_dir_path( __FILE__ ) . 'import-data/import-countries.php';
-include plugin_dir_path( __FILE__ ) . 'import-data/import-charter-bases.php';
-include plugin_dir_path( __FILE__ ) . 'import-data/import-country-states.php';
+include plugin_dir_path( __FILE__ ) . 'import-data/import-countries.php';  // import countries
+include plugin_dir_path( __FILE__ ) . 'import-data/import-charter-bases.php'; // import charter-bases
+include plugin_dir_path( __FILE__ ) . 'import-data/import-country-states.php'; // import country-states
+include plugin_dir_path( __FILE__ ) . 'import-data/import-discount-items.php'; // import discount-items
+include plugin_dir_path( __FILE__ ) . 'import-data/import-engine-builders.php'; // import engine-builders
+include plugin_dir_path( __FILE__ ) . 'import-data/import-equipments.php'; // import engine-builders
+include plugin_dir_path( __FILE__ ) . 'import-data/import-equipment-categories.php'; // import engine-builders
+
 
 class paPlugin
 {
@@ -68,7 +72,7 @@ if( class_exists('paPlugin')){
 function pa_add_menu_page() {
     add_menu_page(
         'API page', //page title
-        'API PAge', //menu title
+        'API Page', //menu title
         'manage_options', //admin_level
         'api-page', //page-slug
         'api_page_function', //callback function 
@@ -116,46 +120,68 @@ function api_page_function(){
 			value="Import Charter Bases"/>
 	<input type="submit" class="ns-btn" name="import_country_states"
 			value="Import Country States"/>
+	<input type="submit" class="ns-btn" name="import_discount_items"
+			value="Import Discount Items"/>
+	<input type="submit" class="ns-btn" name="import_engine_builders"
+			value="Import Engine Builders"/>
+	<input type="submit" class="ns-btn" name="import_equipments"
+			value="Import Equipments"/>
+	<input type="submit" class="ns-btn" name="import_equipment_categories"
+			value="Import Equipment categories"/>
+
 	<input type="submit" class="ns-btn" name="pushcpt"
 			value="All data"/>
-			
 	</form>
 <?php
 
-//button call Api
-if(array_key_exists('pushcpt', $_POST)) 
-{
-    pushcpt();    // for all sync modify in later stage
+	//button call Api
+	if(array_key_exists('pushcpt', $_POST)) 
+	{
+		pushcpt();    // for all sync modify in later stage
+	}
+	// call Api for Cabins
+	if(array_key_exists('import_cabins', $_POST))
+	{
+		import_cabins();
+	}
+	// call Api for Countries
+	if(array_key_exists('import_countries', $_POST))
+	{
+		import_countries();
+	}	
+	// call Api for Charter Bases
+	if(array_key_exists('import_charter_bases', $_POST))
+	{
+		import_charter_bases();
+	}	
+
+	// call Api for Charter Bases
+	if(array_key_exists('import_country_states', $_POST))
+	{
+		import_country_states();
+	}	
+
+	// call Api for Charter Bases
+	if(array_key_exists('import_discount_items', $_POST))
+	{
+		import_discount_items();
+	}	
+	// call Api for Charter Bases
+	if(array_key_exists('import_engine_builders', $_POST))
+	{
+		import_engine_builders();
+	}	
+	// call Api for Charter Bases
+	if(array_key_exists('import_equipments', $_POST))
+	{
+		import_equipments();
+	}	
+	// call Api for Charter Bases
+	if(array_key_exists('import_equipment_categories', $_POST))
+	{
+		import_equipment_categories();
+	}	
 }
-// call Api for Cabins
-if(array_key_exists('import_cabins', $_POST))
-{
-    import_cabins();
-}
-// call Api for Countries
-if(array_key_exists('import_countries', $_POST))
-{
-    import_countries();
-}	
-// call Api for Charter Bases
-if(array_key_exists('import_charter_bases', $_POST))
-{
-    import_charter_bases();
-}	
-
-// call Api for Charter Bases
-if(array_key_exists('import_country_states', $_POST))
-{
-    import_country_states();
-}	
-
-
-
-
-
-}
-
-
 
 /* Generic Function */
 

@@ -5,10 +5,14 @@ function register_config_options()
     register_setting( 'plugin-configuration-group', 'api-username' );
     register_setting( 'plugin-configuration-group', 'api-password' );
     register_setting( 'plugin-configuration-group', 'cabins_endpoint_url' );
+	register_setting( 'plugin-configuration-group', 'charter_bases_endpoint_url' );
     register_setting( 'plugin-configuration-group', 'countries_endpoint_url' );
     register_setting( 'plugin-configuration-group', 'countrystate_endpoint_url' );
-
-    register_setting( 'plugin-configuration-group', 'charter_bases_endpoint_url' );//charter Bases
+	register_setting( 'plugin-configuration-group', 'discount_items_endpoint_url' );
+	register_setting( 'plugin-configuration-group', 'engine_builders_endpoint_url' );
+	register_setting( 'plugin-configuration-group', 'equipments_endpoint_url' );
+	register_setting( 'plugin-configuration-group', 'equipment_categories_endpoint_url' );
+	
 }
 
 
@@ -47,7 +51,6 @@ function myFunction() {
              
         </tr>
          
-
             <tr valign="top">
             <th scope="row">Cabins endpoint:</th>
             <td><input type="url" size=100 name="cabins_endpoint_url" value="<?php echo esc_attr( get_option('cabins_endpoint_url') ); ?>" /></td>
@@ -68,6 +71,22 @@ function myFunction() {
             <th scope="row">Country States endpoint:</th>
             <td><input type="url" size=100 name="countrystate_endpoint_url" value="<?php echo esc_attr( get_option('countrystate_endpoint_url') ); ?>" /></td>
             </tr>
+			
+			 <tr valign="top">
+            <th scope="row">Discount Items endpoint:</th>
+            <td><input type="url" size=100 name="discount_items_endpoint_url" value="<?php echo esc_attr( get_option('discount_items_endpoint_url') ); ?>" /></td>
+            </tr>
+			
+			<tr valign="top">
+            <th scope="row">Equipment endpoint:</th>
+            <td><input type="url" size=100 name="equipments_endpoint_url" value="<?php echo esc_attr( get_option('equipments_endpoint_url') ); ?>" /></td>
+            </tr>
+
+			<tr valign="top">
+            <th scope="row">Equipment categories endpoint:</th>
+            <td><input type="url" size=100 name="equipment_categories_endpoint_url" value="<?php echo esc_attr( get_option('equipment_categories_endpoint_url') ); ?>" /></td>
+            </tr>
+			
         </table>
         
         <?php submit_button(); ?>
