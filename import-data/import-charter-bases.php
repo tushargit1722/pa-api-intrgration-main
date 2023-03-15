@@ -2,7 +2,7 @@
 
 function import_charter_bases(){
 
-	$charter_bases_cpt_type = 'charterbases'; // type for associated CPT
+	$charter_bases_cpt_type = 'charterbase'; // type for associated CPT
 	$endpoint_charter_bases = get_option( 'charter_bases_endpoint_url' );
     $endpoint_username = get_option( 'api-username' );
     $endpoint_password = get_option( 'api-password' );
@@ -16,8 +16,17 @@ function import_charter_bases(){
 	echo '<h2> Function Called : import_charter_bases(): </h2>';
 	echo $response_code;
 
-//print_r($charter_bases);
-//exit;
+/* 
+echo $response_code;
+echo "<pre>";
+foreach ($charter_bases["bases"] as $charter_base) {
+	$secondaryBase = isset($charter_base["secondaryBase"]) ? $charter_base["secondaryBase"] : "";
+	$id = isset($charter_base["id"]) ? $charter_base["id"] : "";
+
+	var_dump($secondaryBase);
+}
+echo "</pre>";
+exit;  */
 
 
 if ( ( 200 === $response_code) && post_type_exists( $charter_bases_cpt_type )) {
@@ -32,21 +41,31 @@ if ( ( 200 === $response_code) && post_type_exists( $charter_bases_cpt_type )) {
         $checkOutTime = isset($charter_base["checkOutTime"]) ? $charter_base["checkOutTime"] : "";
         $lat = isset($charter_base["lat"]) ? $charter_base["lat"] : "";
         $lon = isset($charter_base["lon"]) ? $charter_base["lon"] : "";
-        $disabled = isset($charter_base["disabled"]) ? $charter_base["disabled"] : "";
-        $secondaryBase = isset($charter_base["secondaryBase"]) ? $charter_base["secondaryBase"] : "";
+       
+	    // $disabled = isset($charter_base["disabled"]) ? $charter_base["disabled"] : "";
+        
+		//$secondaryBase = isset($charter_base["secondaryBase"]) ? $charter_base["secondaryBase"] : "";
 		
 
     
 	$post_data = array(
-		'post_title' => $companyId,
+		'post_title' => $id,
 		'post_status' => 'publish',
 		'post_type' => $charter_bases_cpt_type,
 	);
 	
 	$post_id = wp_insert_post( $post_data );
-	//update_field( 'id', $charter_baseId, $post_id );
-	//update_field( 'charter_baseposition', $charter_basePosition, $post_id );
-	//update_field( 'charter_basetype', $charter_baseType, $post_id );
+	update_field( 'id', $id, $post_id );
+	update_field( 'locationid', $locationId, $post_id );
+	update_field( 'companyid', $companyId, $post_id );
+	update_field( 'checkInTime', $checkInTime, $post_id );
+	update_field( 'checkOutTime', $checkOutTime, $post_id );
+	update_field( 'lat', $lat, $post_id );
+	update_field( 'lon', $lon, $post_id );
+	
+	// update_field( 'disabled', $disabled, $post_id );
+	
+	//update_field( 'secondaryBase', $secondaryBase, $post_id );
 	
 	} // end of foreach
 } // end of If
