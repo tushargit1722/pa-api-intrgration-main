@@ -12,6 +12,16 @@ function register_config_options()
 	register_setting( 'plugin-configuration-group', 'engine_builders_endpoint_url' );
 	register_setting( 'plugin-configuration-group', 'equipments_endpoint_url' );
 	register_setting( 'plugin-configuration-group', 'equipment_categories_endpoint_url' );
+	register_setting( 'plugin-configuration-group', 'locations_endpoint_url' );
+	register_setting( 'plugin-configuration-group', 'price_measures_endpoint_url' );
+	register_setting( 'plugin-configuration-group', 'regions_endpoint_url' );
+	register_setting( 'plugin-configuration-group', 'sail_types_endpoint_url' );
+	register_setting( 'plugin-configuration-group', 'seasons_endpoint_url' );
+	register_setting( 'plugin-configuration-group', 'services_endpoint_url' );
+	register_setting( 'plugin-configuration-group', 'steering_type_endpoint_url' );
+	register_setting( 'plugin-configuration-group', 'yacht_builders_endpoint_url' );
+	register_setting( 'plugin-configuration-group', 'yacht_category_endpoint_url' );
+	register_setting( 'plugin-configuration-group', 'yachts_model_endpoint_url' );
 	
 }
 
@@ -77,6 +87,12 @@ function myFunction() {
             <td><input type="url" size=100 name="discount_items_endpoint_url" value="<?php echo esc_attr( get_option('discount_items_endpoint_url') ); ?>" /></td>
             </tr>
 			
+			
+			 <tr valign="top">
+            <th scope="row">Engine Builders endpoint:</th>
+            <td><input type="url" size=100 name="engine_builders_endpoint_url" value="<?php echo esc_attr( get_option('engine_builders_endpoint_url') ); ?>" /></td>
+            </tr>
+			
 			<tr valign="top">
             <th scope="row">Equipment endpoint:</th>
             <td><input type="url" size=100 name="equipments_endpoint_url" value="<?php echo esc_attr( get_option('equipments_endpoint_url') ); ?>" /></td>
@@ -85,6 +101,56 @@ function myFunction() {
 			<tr valign="top">
             <th scope="row">Equipment categories endpoint:</th>
             <td><input type="url" size=100 name="equipment_categories_endpoint_url" value="<?php echo esc_attr( get_option('equipment_categories_endpoint_url') ); ?>" /></td>
+            </tr>
+			
+			<tr valign="top">
+            <th scope="row">Locations endpoint:</th>
+            <td><input type="url" size=100 name="locations_endpoint_url" value="<?php echo esc_attr( get_option('locations_endpoint_url') ); ?>" /></td>
+            </tr>
+			
+			<tr valign="top">
+            <th scope="row">Price Measures endpoint:</th>
+            <td><input type="url" size=100 name="price_measures_endpoint_url" value="<?php echo esc_attr( get_option('price_measures_endpoint_url') ); ?>" /></td>
+            </tr>
+			
+			<tr valign="top">
+            <th scope="row">Regions endpoint:</th>
+            <td><input type="url" size=100 name="regions_endpoint_url" value="<?php echo esc_attr( get_option('regions_endpoint_url') ); ?>" /></td>
+            </tr>
+			
+			<tr valign="top">
+            <th scope="row">Sail Types endpoint:</th>
+            <td><input type="url" size=100 name="sail_types_endpoint_url" value="<?php echo esc_attr( get_option('sail_types_endpoint_url') ); ?>" /></td>
+            </tr>
+			
+			<tr valign="top">
+            <th scope="row">Seasons endpoint:</th>
+            <td><input type="url" size=100 name="seasons_endpoint_url" value="<?php echo esc_attr( get_option('seasons_endpoint_url') ); ?>" /></td>
+            </tr>
+			
+			<tr valign="top">
+            <th scope="row">Services Types endpoint:</th>
+            <td><input type="url" size=100 name="services_endpoint_url" value="<?php echo esc_attr( get_option('services_endpoint_url') ); ?>" /></td>
+            </tr>
+			
+			<tr valign="top">
+            <th scope="row">Steering Types endpoint:</th>
+            <td><input type="url" size=100 name="steering_type_endpoint_url" value="<?php echo esc_attr( get_option('steering_type_endpoint_url') ); ?>" /></td>
+            </tr>
+			
+			<tr valign="top">
+            <th scope="row">Yacht builders Types endpoint:</th>
+            <td><input type="url" size=100 name="yacht_builders_endpoint_url" value="<?php echo esc_attr( get_option('yacht_builders_endpoint_url') ); ?>" /></td>
+            </tr>
+			
+			<tr valign="top">
+            <th scope="row">Yacht category Types endpoint:</th>
+            <td><input type="url" size=100 name="yacht_category_endpoint_url" value="<?php echo esc_attr( get_option('yacht_category_endpoint_url') ); ?>" /></td>
+            </tr>
+			
+			<tr valign="top">
+            <th scope="row">Yachts Models endpoint:</th>
+            <td><input type="url" size=100 name="yachts_model_endpoint_url" value="<?php echo esc_attr( get_option('yachts_model_endpoint_url') ); ?>" /></td>
             </tr>
 			
         </table>

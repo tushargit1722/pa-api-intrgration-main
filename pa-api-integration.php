@@ -2,10 +2,10 @@
 /*
  * Plugin Name: SailiCity API Integration
  * Plugin URI: sailicity.com
- * Author: PharmaACE
- * Author URI: https://mundrisoft.com/
+ * Author: SailiCity
+ * Author URI: https://sailicity.com/
  * Description: Plugin for API Integration
- * Version: 1.0
+ * Version: 1.1
  * text-domain: sa-api-integration
 */
 
@@ -25,6 +25,16 @@ include plugin_dir_path( __FILE__ ) . 'import-data/import-discount-items.php'; /
 include plugin_dir_path( __FILE__ ) . 'import-data/import-engine-builders.php'; // import engine-builders
 include plugin_dir_path( __FILE__ ) . 'import-data/import-equipments.php'; // import engine-builders
 include plugin_dir_path( __FILE__ ) . 'import-data/import-equipment-categories.php'; // import engine-builders
+include plugin_dir_path( __FILE__ ) . 'import-data/import-locations.php'; // import locations
+include plugin_dir_path( __FILE__ ) . 'import-data/import-price-measures.php'; // import measures
+include plugin_dir_path( __FILE__ ) . 'import-data/import-regions.php'; // import regions
+include plugin_dir_path( __FILE__ ) . 'import-data/import-sail-types.php'; // import sail
+include plugin_dir_path( __FILE__ ) . 'import-data/import-seasons.php'; // import seasons
+include plugin_dir_path( __FILE__ ) . 'import-data/import-services.php'; // import services
+include plugin_dir_path( __FILE__ ) . 'import-data/import-steering-types.php'; // import steering-types
+include plugin_dir_path( __FILE__ ) . 'import-data/import-yacht-builders.php'; // import builders
+include plugin_dir_path( __FILE__ ) . 'import-data/import-yacht-categories.php'; // import categories
+include plugin_dir_path( __FILE__ ) . 'import-data/import-yacht-models.php'; // import models
 
 
 class paPlugin
@@ -57,8 +67,8 @@ class paPlugin
 	}
     function pa_enqueue(){
 		// enqueue all our scripts
-		//wp_enqueue_style( 'nausys-css', plugins_url( '/assets/nausys-css.css' , __FILE__ ,10));
-		//wp_enqueue_script( 'nausys-js', plugins_url( '/assets/nausys-js.js' , __FILE__ ));
+		wp_enqueue_style( 'sail-css', plugins_url( '/assets/sail-css.css' , __FILE__ ,10));
+		wp_enqueue_script( 'sail-js', plugins_url( '/assets/sail-js.js' , __FILE__ ));
 	}
 
 } // end of class
@@ -128,7 +138,26 @@ function api_page_function(){
 			value="Import Equipments"/>
 	<input type="submit" class="ns-btn" name="import_equipment_categories"
 			value="Import Equipment categories"/>
-
+	<input type="submit" class="ns-btn" name="import_locations"
+			value="Import Locations"/>
+	<input type="submit" class="ns-btn" name="import_price_measures"
+			value="Import price measures"/>
+	<input type="submit" class="ns-btn" name="import_sail_types"
+			value="Import Sail Types"/>
+	<input type="submit" class="ns-btn" name="import_seasons"
+			value="Import seasons"/>
+	<input type="submit" class="ns-btn" name="import_services"
+			value="Import services"/>		
+	<input type="submit" class="ns-btn" name="import_steering_types"
+			value="Import steering types"/>
+	<input type="submit" class="ns-btn" name="import_yacht_builders"
+			value="Import yacht builders"/>
+	<input type="submit" class="ns-btn" name="import_yacht_categories"
+			value="Import yacht categories"/>
+	<input type="submit" class="ns-btn" name="import_yacht_models"
+			value="Import yacht models"/>
+			
+			
 	<input type="submit" class="ns-btn" name="pushcpt"
 			value="All data"/>
 	</form>
@@ -180,6 +209,60 @@ function api_page_function(){
 	if(array_key_exists('import_equipment_categories', $_POST))
 	{
 		import_equipment_categories();
+	}
+	// call Api for Charter Bases
+	if(array_key_exists('import_locations', $_POST))
+	{
+		import_locations();
+	}
+	
+	// call Api for Charter Bases
+	if(array_key_exists('import_price_measures', $_POST))
+	{
+		import_price_measures();
+	}	
+	
+	// call Api for Charter Bases
+	if(array_key_exists('import_regions', $_POST))
+	{
+		import_regions();
+	}
+	// call Api for Charter Bases
+	if(array_key_exists('import_sail_types', $_POST))
+	{
+		import_sail_types();
+	}	
+	
+	// call Api for Charter Bases
+	if(array_key_exists('import_seasons', $_POST))
+	{
+		import_seasons();
+	}
+	// call Api for Charter Bases
+	if(array_key_exists('import_services', $_POST))
+	{
+		import_services();
+	}	
+	// call Api for Charter Bases
+	if(array_key_exists('import_steering_types', $_POST))
+	{
+		import_steering_types();
+	}
+	// call Api for Charter Bases
+	if(array_key_exists('import_yacht_builders', $_POST))
+	{
+		import_yacht_builders();
+	}
+	// call Api for Charter Bases
+	if(array_key_exists('import_yacht_categories', $_POST))
+	{
+		import_yacht_categories();
+	}	
+	
+	// call Api for Charter Bases
+	if(array_key_exists('import_yacht_models', $_POST))
+	{
+		import_yacht_models();
 	}	
 }
 
